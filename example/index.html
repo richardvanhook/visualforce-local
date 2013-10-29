@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $.ajax({
+          cache: false,
+          url: '<%= serverHost %>/services/data/v26.0/chatter/users/me',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-Authorization', 'OAuth ' + '<%= sessionId %>');
+          },
+          success: function(data,status,xhr){
+            $('body').html('Done!  You are <b>' + data.name 
+              + '</b>, and I, this humble page, retrieved your name from the REST API.');
+          },
+          error: function(xhr,status,errorThrown){
+            $('body').html('Oh no!  Got this error: <br/><b style="color:red">' 
+              + xhr.status + ' ' + errorThrown + ' ' + xhr.responseText + '</b>');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>Loading...</body>
+</html>

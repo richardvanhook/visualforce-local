@@ -1,0 +1,15 @@
+{
+  "name": "visualforce-local-example",
+  "description": "visualforce-local-example",
+  "dependencies": {
+    "express"          : "x",
+    "ejs"              : "x",
+    "visualforce-local": "x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "version": "0.0.1",
+  "repository": {}
+}
