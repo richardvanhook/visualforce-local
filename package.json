@@ -3,8 +3,7 @@
     "version": "0.0.1",
     "author": "Richard Vanhook <rvanhook@salesforce.com>",
     "description": "Enables local development of Visualforce single-page web apps.  Intended for development ONLY - not intended for production use.",
-    "main": "index.js",
-    "bin": { "flv2mp3": "index.js" },
+    "main": "visualforce-local.js",
     "keywords": ["visualforce", "single-page", "local", "salesforce"],
     "repository" : {
             "type": "git",
