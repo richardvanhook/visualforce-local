@@ -1,5 +1,6 @@
 var httpProxy   = require('http-proxy')
   , https       = require('https')
+  , url         = require('url')
   , parseString = require('xml2js').parseString
   , _           = require('underscore')
 
@@ -89,11 +90,11 @@ function parseSoapFaultError(str,callback){
   })
 }
 
-function parseSessionId(str,callback){
+function parseSuccess(str,callback){
   parseString(str, function (err, result) {
     result = result['soapenv:Envelope']['soapenv:Body'][0]
-      ['loginResponse'][0]['result'][0]
-    callback(result['sessionId'])
+      ['loginResponse'][0]['result'][0];
+    callback(url.parse(result['serverUrl'][0]).hostname,result['sessionId']);
   })
 }
 
@@ -107,9 +108,9 @@ module.exports.init = function(config, callback){
             throw new Error('Failed to retrieve session id!\n' + err);
           })
         else 
-          parseSessionId(d.toString(),function(sessionId){
+          parseSuccess(d.toString(),function(serverHost,sessionId){
             process.stdout.write('done\n')
-            callback(config.host,sessionId,initProxyHandler())
+            callback(serverHost,sessionId,initProxyHandler())
           })
       })
   })
