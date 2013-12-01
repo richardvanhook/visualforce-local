@@ -16,6 +16,7 @@ Not intended for production use - intended for development only.
     npm install
 
     #configure/start server
+    export SFDC_HOST=test.salesforce.com
     export SFDC_USERNAME=john.doe@example.com
     export SFDC_PASSWORD=XXXXXXX
     node server.js
