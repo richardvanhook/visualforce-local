@@ -17,7 +17,6 @@ visualforceLocal.init(
     app.engine('.html', ejs.__express);
     app.set('views', __dirname);
     app.set('view engine', 'html');
-    app.use(app.router);
     app.get('/', function(req, res){res.render('index', {
       serverHost: serverHost, 
       sessionId : sessionId
